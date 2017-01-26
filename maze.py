@@ -1,4 +1,5 @@
 import numpy
+import pickle
 from numpy.random import random_integers as rand
 import matplotlib.pyplot as pyplot
 
@@ -31,11 +32,17 @@ def maze(width=81, height=51, complexity=.75, density=.75):
                     x, y = x_, y_
     return Z
 
+mazeFile = open ('generatedMazeFile.txt','w')
+mazeFile.close()
+mazeFile = open ('generatedMazeFile.txt','a')
 
+stringMaze=''
 def PrintIndex(Matrix,Number):
     for i , a in numpy.ndenumerate(Matrix):
         if a == Number :
-            print str(i)+','
+            stringMaze=str(i)+','
+            mazeFile.write(stringMaze)
+
 
 def mazeIndex(y,x):
 
@@ -44,3 +51,8 @@ def mazeIndex(y,x):
     PrintIndex(a,1)
 
 mazeIndex(45, 21)
+
+mazeFile.close()
+
+
+
